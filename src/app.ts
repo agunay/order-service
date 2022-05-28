@@ -4,6 +4,8 @@ import fs = require('fs');
 import swaggerUi = require('swagger-ui-express');
 
 import { customerRouter } from './routers/customerRouter';
+import { itemRouter } from './routers/itemRouter';
+import { orderRouter } from './routers/orderRouter';
 import { errorHandler } from './middlewares/errorHandler';
 
 const swaggerFile: any = path.join(__dirname, 'swagger.json');
@@ -14,6 +16,8 @@ const app = express();
 
 app.use(json());
 app.use(customerRouter);
+app.use(itemRouter);
+app.use(orderRouter);
 app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('*', (req, res) => {
   res.sendStatus(404);

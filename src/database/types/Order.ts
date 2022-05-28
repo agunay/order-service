@@ -1,5 +1,5 @@
 export type Order = {
   id: string;
   customer_id: string;
-  date: Date;
+  date: string;
 };
