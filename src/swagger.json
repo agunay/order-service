@@ -1,0 +1,78 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a simple example NodeJS API",
+    "version": "1.0.0",
+    "title": "Order Service"
+  },
+  "schemes": ["http"],
+  "host": "localhost:3000",
+  "basePath": "/api",
+  "paths": {
+    "/customer/{id}": {
+      "get": {
+        "summary": "Get customer by id",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Customer ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/customer"
+              }
+            }
+          },
+          "400": {
+            "description": "Error: Bad Request",
+            "schema": {
+              "$ref": "#/definitions/badRequest"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "customer": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "email": {
+          "type": "string"
+        },
+        "given_name": {
+          "type": "string"
+        },
+        "family_name": {
+          "type": "string"
+        }
+      }
+    },
+    "badRequest": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "field": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
