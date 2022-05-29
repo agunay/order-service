@@ -7,12 +7,13 @@ const getOrder = async (req: Request) => {
 };
 
 const createOrder = async (req: Request) => {
+  const now = new Date();
   const id = randomUUID();
   await orderService.createOrder(
     {
       id,
       customer_id: req.body.customer_id,
-      date: Date.now().toString(),
+      date: now.toUTCString(),
     },
     req.body.order_items
   );

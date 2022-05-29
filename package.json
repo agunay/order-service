@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.ts",
-    "test": "jest --no-cache --verbose false --detectOpenHandles"
+    "test": "jest --no-cache --detectOpenHandles"
   },
   "repository": {
     "type": "git",

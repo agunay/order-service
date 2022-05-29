@@ -9,6 +9,9 @@ const startService = async () => {
   } catch (err) {
     console.error(err);
   }
+
+  process.on('SIGINT', () => sqliteDb.close());
+  process.on('SIGTERM', () => sqliteDb.close());
 };
 
 app.all('*', async (req, res) => {
